@@ -1,0 +1,77 @@
+.section--sign-in {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  background-color: var(--color-100);
+  row-gap: var(--space-lg);
+  align-items: start;
+  justify-content: center;
+  align-content: center;
+
+  height: 100vh;
+}
+
+.header--sign-in {
+  display: flex;
+
+  align-items: center;
+}
+
+.header--sign-up-btn,
+.header--sign-in-btn {
+  padding: var(--space-md);
+  background-color: var(--color-900);
+  border-radius: var(--radius-pill);
+  color: var(--color-white);
+  transition: all 0.5s;
+  margin-right: var(--space-md);
+}
+
+.header--sign-up-btn:hover,
+.header--sign-in-btn:hover {
+  background-color: var(--color-1000);
+  color: var(--color-lighter-grey);
+}
+
+.form--sign-up {
+  height: 32rem;
+}
+
+.form--sign-in,
+.form--sign-up {
+  justify-content: center;
+  margin: var(--space-lg);
+  /* background-color: var(--color-lighter-grey); */
+}
+
+.sign-in--message {
+  gap: var(--space-md);
+  margin: var(--space-lg);
+}
+
+.btn--sign-in,
+.btn--sign-up {
+  transition: all 0.5s;
+}
+
+.btn--sign-in:hover,
+.btn--sign-up:hover {
+  color: var(--color-lighter-grey);
+  background-color: var(--color-900);
+}
+
+.welcome--message {
+  font-size: var(--font-largest);
+  color: var(--color-900);
+}
+
+.paragraph--message {
+  font-size: var(--font-large);
+}
+
+.error--message {
+  color: var(--color-purple);
+}
+
+.remember--me {
+  color: var(--color-darker-grey);
+}

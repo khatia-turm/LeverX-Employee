@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "es2022",
+    "target": "es2022",
+
+    "strict": true,
+    "removeComments": true, // remove comments in the output JavaScript files
+    "noEmitOnError": true, // will not emit output if there are type errors
+    "sourceMap": true // enable source maps for debugging
+    // "noUnusedParameters": true, // will raise error if there are unused parameters in functions
+    // "noUnusedLocals": true, // will raise error if there are unused local variables
+    // "noImplicitReturns": true // will raise error if function does not return a value on all code paths
+  },
+  "include": ["src/**/*"]
+}

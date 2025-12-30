@@ -1,0 +1,25 @@
+{
+  "name": "khatia-turmanidze",
+  "version": "1.0.0",
+  "description": "1. prepare project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://frontend-course-2025-gitlab.codelx.dev/fe/khatia-turmanidze.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
