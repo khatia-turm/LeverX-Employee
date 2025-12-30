@@ -1,76 +1,50 @@
-# implementations
+# implemented
 
-1. prepare project
+Add RTK to your existing project
 
-- install TypeScript globally ✔️
-- configure typescript ✔️
-- refactor all JS code into TS ✔️
+1. Prepare project: ✔️
+   a) Install RTK. ✔️
+   b) Configure store, reducers, slices and middleware (if needed). ✔️
+2. Refactor project architecture: ✔️
+   a) Move all necessary data to the store. ✔️
+   b) Instead of using fetch API and XmlHttpRequest use RTK Query. ✔️
 
-2. create sign in HTML page:
+### Tasks:
 
-- sign in form with email and password fiels ✔️
-- design of the page ✔️
+3. Resolve all of the bugs and comments from previous MRs.
+4. Add Detailed README file. ✔️
+5. Integrate linter into the project. ✔️
+6. Iron out the code ( refactor and improve it ) ✔️
 
-3. implement sign in functionality
+### advanced
 
-   installing npm backend dependencies
-   npm install bcrypt
+1. Complete all Advanced features (If you haven’t done it yet). ✔️✖️ (partially)
+2. Implement transitions all-over the app. ✔️
+3. Deploy your app. ✖️
 
-# running the program
+## launching
 
-- front end is on live-server of vsc extension
-- back end is on port 3000
+npm run dev {runs script for webpack}
+BE port is 3000, and file is in server/server.js (node server.js)
 
-to run backend server, run in terminal
+## homework 4 fixees
 
-- node server.js
-- typescript runs with tsc
+- **Add route protection** - Check Admin role in roles.ts before allowing page access ✔️
+- **Complete edit functionality** - Add first name, last name, and native name fields to edit form ✔️
+- **Fix visa editing** - Add `name` attributes to visa inputs and ensure they're collected in form submission
+- **Remove console statements** - Clean up debug code or implement proper logging ✔️
+- **Improve type safety** - Replace `any` types with proper TypeScript types ✔️
+- **Add input validation** - Validate form inputs before sending requests ✔️
+- **Extract duplicated code** - Create utility function for getting logged-in user ✔️
+- **Fix manager display bug** - Correct string concatenation on line 144 ✔️
+- [ ] **Standardize error handling** - Use consistent error handling pattern throughout ✔️✖️
+- **Update SCSS syntax** - Migrate from `@import` to `@use`/`@forward`✔️
 
-- database is simply lowDB with employees array (full details), authUsers with hashed passwords + emails, that one is used to sign in,
-  first one to display details
+## homewrok 5 fixes
 
-# User passwords
+- pending MR
 
-hashed passwords are password1, and number changes on id
-id=2, password=password2
+###
 
-### protection of pages is a mess
-
-- I couldn't route html pages better, with user story a
-  ((1) When the application is opened, the unauthenticated user sees the sign-in page
-  with sign-in form.), I did that just by naming it index.html
-- there is routes I tried to apply, but it doesn't seem to work
-
-## notes
-
-### sign up
-
-- i did implement server endpoint, and all the functions needed
-- there is a bug, won't redirect me to main page
-- unfortonutely I don't have enough time to solve it T-T
-
-### remember me
-
-- user is saved into sessionStorage if RememberMe is not checked
-- if it is, then into localStorage
-- hopefully that's what those user stories meant
-  { 3) After successful authentication, the system will remember the user as long as
-  the browser tab remains open.,
-  1. Implement "Remember Me" Functionality:
-     a) Add "Remember Me" checkbox to the Sign-In form
-     b) After successful authentication, the system should “Remember” the user
-     forever.
-
-}
-
-### overview bugs
-
-- ✔️ search doesn't work and opens 404
-- ❓basic search should have single input,
-  it still has few inputs, but it works if any field is filled correctly
-- ✔️no underline to highlight active search tab
-- ✔️ no cursor pointer for clickable areas
-- ✔️weird clickable area of address book link
-- ? selects are empty
-- ✔️remote badge is not visible on the list
-- ❓no :hover effects (partially fixed, for next hw)
+password for users are password${id}
+admin is anno.hideaki@leverx.com (password11)
