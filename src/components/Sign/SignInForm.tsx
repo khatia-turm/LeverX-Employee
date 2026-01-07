@@ -1,12 +1,13 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSignInMutation } from "../../features/authApi";
+import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSignInMutation } from '../../features/authApi';
+import { getErrorMessage } from '../../core';
 
 export function SignInForm(): React.ReactElement {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -15,15 +16,16 @@ export function SignInForm(): React.ReactElement {
 
   const handleSumbit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    const trimmedEmail = email.trim();
     try {
-      const result = await signIn({ email, password }).unwrap();
+      const result = await signIn({ email: trimmedEmail, password }).unwrap();
+
       const storage = rememberMe ? localStorage : sessionStorage;
-      storage.setItem("loggedInUser", email);
-      storage.setItem("result", JSON.stringify(result));
-      navigate("/main", { replace: true });
+      storage.setItem('loggedInUser', trimmedEmail);
+      storage.setItem('result', JSON.stringify(result));
+      navigate('/main', { replace: true });
     } catch (err) {
-      setErrorMessage(`wrong email or password ${err}`);
+      setErrorMessage(getErrorMessage(err));
     }
   };
 

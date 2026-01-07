@@ -62,12 +62,40 @@
     {
       "email": "khinkali@leverx.com",
       "hashed_password": "$2b$13$WAq004oswS7M5DnGR22yxuXV.x1UXaOBphLNldr/oUOOTUQulTVtG"
+    },
+    {
+      "email": "awefawe@gmail.com",
+      "hashed_password": "$2b$13$nu/oAEbTvtRcB2wU0f.RS.Bc2U8R5g3haZlGsIgTv9njZEhSQxyvm"
+    },
+    {
+      "email": "jnajfr@gmail.com",
+      "hashed_password": "$2b$13$/vZJFLOaSZ5IU2vrJVGXleh57ILWg/SkSbqofkp7o4oYNOkRCaoqe"
+    },
+    {
+      "email": "rei.ay@leverx.com",
+      "hashed_password": "$2b$13$bmFOo.2oH81XB7p8lvNNu.f5wSM/MSDt4DDGZx68ZWWGp7hVOuMAu"
+    },
+    {
+      "email": "admin@haxelo.com",
+      "hashed_password": "$2b$13$43G0KG7sxG9CLP48.xlYWO9XkU/P741quzhI9Mt8lT3iYNzNwMtTm"
+    },
+    {
+      "email": "q2rq21@gmail.com",
+      "hashed_password": "$2b$13$LccjuRUfy1Ilsi1qEoJl7uy2cRfYUCtu5qJ857lqgPiMEkrEaf8pS"
+    },
+    {
+      "email": "shinji.ikri@leverx.com",
+      "hashed_password": "$2b$13$x7STCUX8ijWqgUgh6I.9Wenlp9shFLhOf9r0w3ii4y/xxt9rzu5Si"
+    },
+    {
+      "email": "3r2t@gmail.com",
+      "hashed_password": "$2b$13$prierpJUn1Rkd2vspxfUMOK9d.MMQuQh9Buf8VFtKiW3yPVhQdVc."
     }
   ],
   "employees": [
     {
       "_id": "1",
-      "role": "Employee",
+      "role": "HR",
       "isRemoteWork": true,
       "user_avatar": "/users/rei.jpg",
       "first_name": "Rei",
@@ -537,7 +565,7 @@
     },
     {
       "_id": "12",
-      "role": "Employee",
+      "role": "HR",
       "first_name": "dumpling",
       "last_name": "dump",
       "email": "dumplingdump1@gmail.com",
@@ -589,6 +617,223 @@
         "year": 0,
         "month": 0,
         "day": 0
+      },
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "visa": []
+    },
+    {
+      "_id": "14",
+      "role": "Employee",
+      "first_name": "sg",
+      "last_name": "aegwae",
+      "email": "awefawe@gmail.com",
+      "user_avatar": "/users/dumplinh.jpg",
+      "first_native_name": "",
+      "middle_native_name": "",
+      "last_native_name": "",
+      "department": "",
+      "building": "",
+      "room": 0,
+      "desk_number": 0,
+      "isRemoteWork": false,
+      "phone": "",
+      "zoom_id": "",
+      "zoom_link": "",
+      "citizenship": "",
+      "date_birth": {
+        "year": 0,
+        "month": 0,
+        "day": 0
+      },
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "visa": []
+    },
+    {
+      "_id": "15",
+      "role": "Employee",
+      "first_name": "sbfs",
+      "last_name": "jwdh",
+      "email": "jnajfr@gmail.com",
+      "user_avatar": "/users/dumplinh.jpg",
+      "first_native_name": "",
+      "middle_native_name": "",
+      "last_native_name": "",
+      "department": "",
+      "building": "",
+      "room": 0,
+      "desk_number": 0,
+      "isRemoteWork": false,
+      "phone": "",
+      "zoom_id": "",
+      "zoom_link": "",
+      "citizenship": "",
+      "date_birth": {
+        "year": 0,
+        "month": 0,
+        "day": 0
+      },
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "visa": []
+    },
+    {
+      "_id": "16",
+      "role": "Employee",
+      "first_name": "sd",
+      "last_name": "ad",
+      "email": "rei.ay@leverx.com",
+      "user_avatar": "/users/dumplinh.jpg",
+      "first_native_name": "",
+      "middle_native_name": "",
+      "last_native_name": "",
+      "department": "",
+      "building": "",
+      "room": 0,
+      "desk_number": 0,
+      "isRemoteWork": false,
+      "phone": "",
+      "zoom_id": "",
+      "zoom_link": "",
+      "citizenship": "",
+      "date_birth": {
+        "year": 0,
+        "month": 0,
+        "day": 0
+      },
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "visa": []
+    },
+    {
+      "_id": "17",
+      "role": "Employee",
+      "first_name": "asd",
+      "last_name": "asd",
+      "email": "admin@haxelo.com",
+      "user_avatar": "/users/dumplinh.jpg",
+      "first_native_name": "",
+      "middle_native_name": "",
+      "last_native_name": "",
+      "department": "",
+      "building": "",
+      "room": 0,
+      "desk_number": 0,
+      "isRemoteWork": false,
+      "phone": "",
+      "zoom_id": "",
+      "zoom_link": "",
+      "citizenship": "",
+      "date_birth": {
+        "year": 0,
+        "month": 0,
+        "day": 0
+      },
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "visa": []
+    },
+    {
+      "_id": "18",
+      "role": "Employee",
+      "first_name": "qwe",
+      "last_name": "qrq",
+      "email": "q2rq21@gmail.com",
+      "user_avatar": "/users/dumplinh.jpg",
+      "first_native_name": "",
+      "middle_native_name": "",
+      "last_native_name": "",
+      "department": "",
+      "building": "",
+      "room": 0,
+      "desk_number": 0,
+      "isRemoteWork": false,
+      "phone": "",
+      "zoom_id": "",
+      "zoom_link": "",
+      "citizenship": "",
+      "date_birth": {
+        "year": 0,
+        "month": 0,
+        "day": 0
+      },
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "visa": []
+    },
+    {
+      "_id": "19",
+      "role": "Employee",
+      "first_name": "as",
+      "last_name": "af",
+      "email": "shinji.ikri@leverx.com",
+      "user_avatar": "/users/dumplinh.jpg",
+      "first_native_name": "",
+      "middle_native_name": "",
+      "last_native_name": "",
+      "department": "",
+      "building": "",
+      "room": 0,
+      "desk_number": 0,
+      "isRemoteWork": false,
+      "phone": "",
+      "zoom_id": "",
+      "zoom_link": "",
+      "citizenship": "",
+      "date_birth": {
+        "year": 0,
+        "month": 0,
+        "day": 0
+      },
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "visa": []
+    },
+    {
+      "_id": "20",
+      "role": "Employee",
+      "first_name": "wer",
+      "last_name": "wr",
+      "email": "3r2t@gmail.com",
+      "user_avatar": "/users/dumplinh.jpg",
+      "first_native_name": "",
+      "middle_native_name": "",
+      "last_native_name": "",
+      "department": "",
+      "building": "",
+      "room": 0,
+      "desk_number": 0,
+      "isRemoteWork": false,
+      "phone": "",
+      "zoom_id": "",
+      "zoom_link": "",
+      "citizenship": "",
+      "date_birth": {
+        "year": null,
+        "month": null,
+        "day": null
       },
       "manager": {
         "id": "",

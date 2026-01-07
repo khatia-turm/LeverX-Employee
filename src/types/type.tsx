@@ -54,6 +54,6 @@ export interface IEmployee {
   visa?: IVisa[];
 }
 
-export type EmployeeUpdate = Partial<Omit<IEmployee, "manager">> & {
+export type EmployeeUpdate = Partial<Omit<IEmployee, 'manager'>> & {
   manager?: string | null;
 };

@@ -1,26 +1,29 @@
-# implemented
+# fix
 
-Add RTK to your existing project
+- in AvatarSection.tsx move button to reusable components
+  - always providewidth and height. also weird class name for the image, better create reusable Icon component, also no alt (avatar-section\_\_link?)
+- DetailRow.tsx - add reusable input components
+- EmployeeEdtForm.tsx move validateForm in helpers
+- EmployeeView.tsx can be optimized to render sections with rows using proper data format and using .map() to avoid code duplication
+  (implement Section component and pass the fields via props)
+- avoid creating components inside components
+- EmployeeHeader.tsx don't use inline svg, cleate single component for maintaining all the icons
+- Main.tsx filtering should be done on BE?
+  - handling for {loading, error}
+  - pass search to the query args and make it filter on BE ?
+- styles are off?
 
-1. Prepare project: ✔️
-   a) Install RTK. ✔️
-   b) Configure store, reducers, slices and middleware (if needed). ✔️
-2. Refactor project architecture: ✔️
-   a) Move all necessary data to the store. ✔️
-   b) Instead of using fetch API and XmlHttpRequest use RTK Query. ✔️
+# BUGS
 
-### Tasks:
+- search on main shouldn't open details page. it's supposed to search and show filtered results in the list
+- sign in/up should be route, using root route rn T-T seperate routes for each
 
-3. Resolve all of the bugs and comments from previous MRs.
-4. Add Detailed README file. ✔️
-5. Integrate linter into the project. ✔️
-6. Iron out the code ( refactor and improve it ) ✔️
+# CRITICAL BUGS
 
-### advanced
-
-1. Complete all Advanced features (If you haven’t done it yet). ✔️✖️ (partially)
-2. Implement transitions all-over the app. ✔️
-3. Deploy your app. ✖️
+- email is not trimmed during sign in ✔️
+- the sign in error message has [object Object]? what ✔️
+- after signup all users removed?
+- invalid data date in details page
 
 ## launching
 
@@ -37,7 +40,7 @@ BE port is 3000, and file is in server/server.js (node server.js)
 - **Add input validation** - Validate form inputs before sending requests ✔️
 - **Extract duplicated code** - Create utility function for getting logged-in user ✔️
 - **Fix manager display bug** - Correct string concatenation on line 144 ✔️
-- [ ] **Standardize error handling** - Use consistent error handling pattern throughout ✔️✖️
+- [ ] **Standardize error handling** - Use consistent error handling pattern throughout ✔️
 - **Update SCSS syntax** - Migrate from `@import` to `@use`/`@forward`✔️
 
 ## homewrok 5 fixes

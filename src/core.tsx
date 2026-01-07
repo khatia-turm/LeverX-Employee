@@ -1,10 +1,11 @@
-import { IEmployee, IDateOfBirth } from "./types/type";
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { IEmployee, IDateOfBirth } from './types/type';
 
 // getting logged in user
 export const getLoggedInUser = (users: IEmployee[]): IEmployee | undefined => {
   const loggedEmail =
-    localStorage.getItem("loggedInUser") ||
-    sessionStorage.getItem("loggedInUser");
+    localStorage.getItem('loggedInUser') ||
+    sessionStorage.getItem('loggedInUser');
   return users.find((u) => u.email === loggedEmail);
 };
 
@@ -14,20 +15,50 @@ export function canEdit(
 ): boolean {
   if (!loggedIn) return false;
 
-  return loggedIn.role === "Admin" || loggedIn._id === target.manager?._id;
+  return loggedIn.role === 'Admin' || loggedIn._id === target.manager?._id;
 }
 
 export function formatDateOfBirth(
   date: IDateOfBirth | null | undefined
 ): string {
-  if (!date) return "no date";
+  if (!date) return 'no date';
   if (!date.year || !date.month || !date.day) {
-    return "invalid date data";
+    return 'date of birth not set';
   }
   const dat = new Date(date.year, date.month - 1, date.day);
   return dat.toLocaleDateString(undefined, {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
   });
+}
+
+// helper function for consistant error handling
+export function getErrorMessage(err: unknown): string {
+  // RTK Query error
+  if (typeof err === 'object' && err !== null && 'status' in err) {
+    const error = err as FetchBaseQueryError;
+    // Backend sent plain string
+    if (typeof error.data === 'string') {
+      return error.data;
+    }
+    // Backend sent structured object
+    if (typeof error.data === 'object' && error.data !== null) {
+      if ('message' in error.data) return String(error.data.message);
+      if ('error' in error.data) return String(error.data.error);
+      if ('details' in error.data) return String(error.data.details);
+    }
+    // HTTP status-based fallback (still useful)
+    if (typeof error.status === 'number') {
+      if (error.status === 401) return 'Invalid email or password';
+      if (error.status === 403) return 'You are not authorized';
+      if (error.status === 404) return 'Resource not found';
+      if (error.status >= 500) return 'Server error, try again later';
+    }
+  }
+
+  if (err instanceof Error) {
+    return err.message;
+  }
+  return 'Something went wrong';
 }

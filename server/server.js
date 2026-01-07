@@ -70,7 +70,7 @@ app.post('/sign-up', async (req, res) => {
     zoom_id: '',
     zoom_link: '',
     citizenship: '',
-    date_birth: { year: 0, month: 0, day: 0 },
+    date_birth: { year: null, month: null, day: null },
     manager: { id: '', first_name: '', last_name: '' },
     visa: [],
   };

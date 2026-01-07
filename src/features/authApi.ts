@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IEmployee } from '../types/type';
 
 interface SignInPayload {
   email: string;
@@ -12,9 +13,14 @@ interface SignUpPayload {
   last_name: string;
 }
 
-interface AuthResponse {
+interface signInResponse {
   token: string;
   userId: string;
+}
+
+interface signUpResponse {
+  message: string;
+  employee: IEmployee;
 }
 
 export const authApi = createApi({
@@ -23,7 +29,7 @@ export const authApi = createApi({
     baseUrl: 'http://localhost:3000',
   }),
   endpoints: (builder) => ({
-    signIn: builder.mutation<AuthResponse, SignInPayload>({
+    signIn: builder.mutation<signInResponse, SignInPayload>({
       query: (body) => ({
         url: '/sign-in',
         method: 'POST',
@@ -34,7 +40,7 @@ export const authApi = createApi({
       }),
     }),
 
-    signUp: builder.mutation<AuthResponse, SignUpPayload>({
+    signUp: builder.mutation<signUpResponse, SignUpPayload>({
       query: (body) => ({
         url: '/sign-up',
         method: 'POST',
