@@ -7,6 +7,14 @@ import cors from 'cors';
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 const db = await JSONFilePreset('db.json', { authUsers: [], employees: [] });
 const DUMMY_TOKEN = 'authorized-can-access';
 function authMiddleware(req, res, next) {
@@ -114,12 +122,4 @@ app.put('/users/:id/role', authMiddleware, async (req, res) => {
   await db.write();
 
   res.json({ message: 'Role updated successfully', employee: employeeToEdit });
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 });
