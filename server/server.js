@@ -116,7 +116,7 @@ app.put('/users/:id/role', authMiddleware, async (req, res) => {
   res.json({ message: 'Role updated successfully', employee: employeeToEdit });
 });
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 const PORT = process.env.PORT || 3000;
