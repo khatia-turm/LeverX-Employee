@@ -1,4 +1,5 @@
-import { JSONFilePreset } from 'lowdb/node';
+import { Low } from 'lowdb';
+import { JSONFile, JSONFilePreset } from 'lowdb/node';
 import bcrypt from 'bcrypt';
 import express from 'express';
 import cors from 'cors';
@@ -19,12 +20,6 @@ function authMiddleware(req, res, next) {
 
   next();
 }
-
-app.use(express.static(path.join(__dirname, '../dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
 
 app.post('/sign-in', async (req, res) => {
   const { email, password } = req.body;
