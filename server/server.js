@@ -20,8 +20,6 @@ function authMiddleware(req, res, next) {
   next();
 }
 
-const path = require('path');
-
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.get('*', (req, res) => {
@@ -123,8 +121,7 @@ app.put('/users/:id/role', authMiddleware, async (req, res) => {
   res.json({ message: 'Role updated successfully', employee: employeeToEdit });
 });
 
-const PORT = process.env.PORT || 3000;
-
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
