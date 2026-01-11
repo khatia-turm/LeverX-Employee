@@ -1,28 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { Header } from '../components/Header';
-import { useNavigate } from 'react-router-dom';
 import { IEmployee } from '../types/type';
 import BasicSearchForm from '../components/Main/SearchBasic';
 import SearchAdvanced from '../components/Main/SearchAdvanced';
 import EmployeeHeader from '../components/Main/EmployeeHeader';
 import EmployeeContainer from '../components/Main/EmployeeContainer';
 import { getLoggedInUser } from '../core.tsx';
-
+import { AdvancedSearchCriteria } from '../components/Main/SearchAdvanced';
 import { useGetUsersQuery } from '../features/usersApi';
-
-interface SearchCriteria {
-  fullname: string;
-}
-
-interface AdvancedSearchCriteria {
-  name: string;
-  email: string;
-  phone: string;
-  zoom: string;
-  building: string;
-  room: string;
-  department: string;
-}
+import { SearchCriteria } from '../components/Main/SearchBasic';
 
 interface SearchToggleProps {
   isBasicSearch: boolean;
@@ -54,67 +40,53 @@ export function SearchToggle({
 const filterUsers = (
   users: IEmployee[],
   criteria: SearchCriteria
-): IEmployee | undefined => {
-  const { fullname } = criteria;
-
-  const searchFullName = fullname.trim().toLowerCase();
+): IEmployee[] => {
+  const searchFullName = criteria.fullname.trim().toLowerCase();
 
   if (!searchFullName) {
-    return undefined;
+    return users;
   }
 
-  return users.find((u) => {
-    const userFullName = `${u.first_name} ${u.last_name}`.toLowerCase();
-
-    return searchFullName && userFullName.includes(searchFullName);
-  });
+  return users.filter((u) =>
+    `${u.first_name} ${u.last_name}`.toLowerCase().includes(searchFullName)
+  );
 };
-
 const filterAdvancedUsers = (
   users: IEmployee[],
   criteria: AdvancedSearchCriteria
-): IEmployee | undefined => {
-  const { name, email, phone, zoom, building, room, department } = criteria;
+): IEmployee[] => {
+  const name = criteria.name?.trim().toLowerCase() || '';
+  const email = criteria.email?.trim().toLowerCase() || '';
+  const phone = criteria.phone?.trim() || '';
+  const zoom = criteria.zoom?.trim() || '';
+  const building = criteria.building?.trim().toLowerCase() || 'any';
+  const room = criteria.room?.trim() || ''; // keep as string
+  const department = criteria.department?.trim().toLowerCase() || 'any';
 
-  const searchName = name.trim().toLowerCase();
-  const searchEmail = email.trim().toLowerCase();
-  const searchPhone = phone.trim();
-  const searchZoom = zoom.trim();
-  const searchBuilding = building.trim().toLowerCase();
-  const searchRoom = room.trim().toLowerCase();
-  const searchDepartment = department.trim().toLowerCase();
+  return users.filter((u) => {
+    const userFullName = `${u.first_name} ${u.last_name}`.toLowerCase();
+    const userRoom = u.room?.toString() || '';
 
-  if (
-    !searchName &&
-    !searchEmail &&
-    !searchPhone &&
-    !searchZoom &&
-    searchBuilding === 'any' &&
-    !searchRoom &&
-    searchDepartment === 'any'
-  ) {
-    return undefined;
-  }
-
-  return users.find(
-    (u) =>
-      (searchName &&
-        `${u.first_name} ${u.last_name}`.toLowerCase().includes(searchName)) ||
-      (searchEmail && u.email.toLowerCase() === searchEmail) ||
-      (searchPhone && u.phone === searchPhone) ||
-      (searchZoom && u.zoom_id === searchZoom) ||
-      (searchBuilding !== 'any' &&
-        u.building.toLowerCase() === searchBuilding) ||
-      (searchRoom && u.room.toLowerCase() === searchRoom) ||
-      (searchDepartment !== 'any' &&
-        u.department.toLowerCase() === searchDepartment)
-  );
+    return (
+      (!name || userFullName.includes(name)) &&
+      (!email || u.email.toLowerCase() === email) &&
+      (!phone || u.phone === phone) &&
+      (!zoom || u.zoom_id === zoom) &&
+      (building === 'any' || u.building.toLowerCase() === building) &&
+      (!room || userRoom === room) &&
+      (department === 'any' || u.department.toLowerCase() === department)
+    );
+  });
 };
 
 export default function Main(): React.ReactElement {
-  const [searchError, setSearchError] = useState<string | null>(null);
   const [isBasicSearch, setIsBasicSearch] = useState(true);
-  const navigate = useNavigate();
+  const [basicCriteria, setBasicCriteria] = useState<SearchCriteria | null>(
+    null
+  );
+  const [advancedCriteria, setAdvancedCriteria] =
+    useState<AdvancedSearchCriteria | null>(null);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const { data: allUsers = [] } = useGetUsersQuery();
 
@@ -125,31 +97,31 @@ export default function Main(): React.ReactElement {
 
   const isAdmin = useMemo(() => loggedUser?.role === 'Admin', [loggedUser]);
 
-  const handleSearchSubmit = (criteria: SearchCriteria) => {
-    const foundUser = filterUsers(allUsers, criteria);
-
-    if (foundUser) {
-      navigate(`/details/${foundUser._id}`);
-    } else {
-      setSearchError('No employee found matching the criteria.');
+  const filteredUsers = useMemo(() => {
+    if (basicCriteria) {
+      return filterUsers(allUsers, basicCriteria);
     }
-  };
 
-  const handleAdvancedSearchSubmit = (criteria: AdvancedSearchCriteria) => {
-    const foundUser = filterAdvancedUsers(allUsers, criteria);
-
-    if (foundUser) {
-      navigate(`/details/${foundUser._id}`);
-    } else {
-      setSearchError('No employee found matching the criteria.');
+    if (advancedCriteria) {
+      return filterAdvancedUsers(allUsers, advancedCriteria);
     }
+
+    return allUsers;
+  }, [allUsers, basicCriteria, advancedCriteria]);
+
+  const handleBasicSearch = (criteria: SearchCriteria) => {
+    setAdvancedCriteria(null);
+    setBasicCriteria(criteria);
   };
 
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-
-  const handleViewChange = (mode: 'grid' | 'list') => {
-    setViewMode(mode);
+  const handleAdvancedSearch = (criteria: AdvancedSearchCriteria) => {
+    setBasicCriteria(null);
+    setAdvancedCriteria(criteria);
   };
+
+  // const handleViewChange = (mode: 'grid' | 'list') => {
+  //   setViewMode(mode);
+  // };
 
   return (
     <>
@@ -160,20 +132,20 @@ export default function Main(): React.ReactElement {
             isBasicSearch={isBasicSearch}
             onToggleMode={setIsBasicSearch}
           />
-          <EmployeeHeader users={allUsers} onViewChange={handleViewChange} />
+          <EmployeeHeader users={filteredUsers} onViewChange={setViewMode} />
           {isBasicSearch ? (
-            <BasicSearchForm onSearchSubmit={handleSearchSubmit} />
+            <BasicSearchForm onSearchSubmit={handleBasicSearch} />
           ) : (
-            <SearchAdvanced onSearchSubmit={handleAdvancedSearchSubmit} />
+            <SearchAdvanced onSearchSubmit={handleAdvancedSearch} />
           )}
-          {searchError ? (
+          {filteredUsers.length === 0 ? (
             <img
               src="./svgs/not-found.jpg"
               alt="nothing found"
               className="nothing-found"
             />
           ) : (
-            <EmployeeContainer users={allUsers} viewMode={viewMode} />
+            <EmployeeContainer users={filteredUsers} viewMode={viewMode} />
           )}
         </div>
       </div>

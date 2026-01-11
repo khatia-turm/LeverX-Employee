@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface AdvancedSearchCriteria {
+export interface AdvancedSearchCriteria {
   name: string;
   email: string;
   phone: string;

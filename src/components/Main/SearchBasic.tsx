@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface SearchCriteria {
+export interface SearchCriteria {
   fullname: string;
 }
 
