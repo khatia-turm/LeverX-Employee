@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Sign from './pages/Sign';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 import Main from './pages/Main';
 import Details from './pages/Details';
 import Roles from './pages/Roles';
@@ -14,17 +15,18 @@ const isAuthenticated = () => {
 const PrivateRoute: React.FC<{ children: React.ReactElement }> = ({
   children,
 }) => {
-  if (!isAuthenticated()) {
-    return <Navigate to="/" replace />;
-  }
-  return children;
+  return isAuthenticated() ? children : <Navigate to="/signin" replace />;
 };
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Sign />} />
+        <Route path="/" element={<Navigate to="/signin" replace />} />
+
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+
         <Route
           path="/main"
           element={

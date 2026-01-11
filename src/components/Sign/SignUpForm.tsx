@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSignUpMutation } from '../../features/authApi';
 import { getErrorMessage } from '../../core';
-export function SignUpForm(): React.ReactElement {
+
+export default function SignUpForm(): React.ReactElement {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

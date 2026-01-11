@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSignInMutation } from '../../features/authApi';
 import { getErrorMessage } from '../../core';
 
-export function SignInForm(): React.ReactElement {
+export default function SignInForm(): React.ReactElement {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
