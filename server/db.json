@@ -790,7 +790,7 @@
       "first_native_name": "",
       "middle_native_name": "",
       "last_native_name": "",
-      "department": "",
+      "department": "Web & Mobile",
       "building": "",
       "room": 0,
       "desk_number": 0,
@@ -800,9 +800,9 @@
       "zoom_link": "",
       "citizenship": "",
       "date_birth": {
-        "year": 0,
-        "month": 0,
-        "day": 0
+        "year": 2009,
+        "month": 12,
+        "day": 12
       },
       "manager": {
         "id": "",

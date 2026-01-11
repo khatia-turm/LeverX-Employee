@@ -22,7 +22,7 @@ const validateForm = (formData: FormState) => {
   if (formData.date_birth) {
     const [y, m, d] = formData.date_birth.split('-').map(Number);
     if (!y || y < 1900 || !m || m < 1 || m > 12 || !d || d < 1 || d > 31)
-      errors.date_birth = 'Invalid date of birth';
+      errors.date_birth = 'input format should be year-month-day';
   }
 
   // visas

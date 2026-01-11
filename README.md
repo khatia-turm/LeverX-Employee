@@ -22,8 +22,8 @@
 
 - email is not trimmed during sign in ✔️
 - the sign in error message has [object Object]? what ✔️
-- after signup all users removed?
-- invalid data date in details page
+- after signup all users removed? ✔️
+- invalid data date in details page ✔️
 
 ## launching
 

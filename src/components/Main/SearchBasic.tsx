@@ -8,7 +8,7 @@ interface BasicSearchFormProps {
   onSearchSubmit: (criteria: SearchCriteria) => void;
 }
 
-export default function BasicSearchBasic({
+export default function SearchBasic({
   onSearchSubmit,
 }: BasicSearchFormProps): React.ReactElement {
   const [fullname, setFullname] = useState('');
