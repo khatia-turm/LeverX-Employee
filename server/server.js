@@ -1,5 +1,4 @@
-import { Low } from 'lowdb';
-import { JSONFile, JSONFilePreset } from 'lowdb/node';
+import { JSONFilePreset } from 'lowdb/node';
 import bcrypt from 'bcrypt';
 import express from 'express';
 import cors from 'cors';
